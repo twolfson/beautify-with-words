@@ -2,6 +2,7 @@
 'use strict';
 
 var fs = require('fs');
+var beautifyWithWords = require('../');
 
 var argv = require('optimist')
   .usage('Beautify javascript with unique \"long-ish words\" for variable names.\n' +
@@ -44,7 +45,7 @@ if (argv._.length === 0) {
 }
 
 function processContents(contents) {
-  beautifyWithWords(contents, argv);
+  var stream = beautifyWithWords(contents, argv);
 
   // Output
   if (typeof argv.o === 'string') {
